@@ -1,11 +1,9 @@
 from django.shortcuts import render, redirect
 from accounts.forms import LoginForm
-from django.contrib.auth import authenticate, login
+from django.contrib.auth import authenticate, login, logout
 
 
 # login
-
-
 def user_login(request):
     if request.method == "POST":
         form = LoginForm(request.POST)
@@ -26,3 +24,9 @@ def user_login(request):
         "form": form,
     }
     return render(request, "accounts/login.html", context)
+
+
+# logout
+def user_logout(request):
+    logout(request)
+    return redirect("login")
