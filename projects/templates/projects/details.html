@@ -29,7 +29,7 @@ My Project
                     <td>{{ detail.assignee }}</td>
                     <td>{{ detail.start_date }}</td>
                     <td>{{ detail.due_date }}</td>
-                    <td>{{ detail|yesno }}</td>
+                    <td>{{ detail.is_completed|yesno }}</td>
                 </tr>
                 {% endfor %}
             </tbody>
