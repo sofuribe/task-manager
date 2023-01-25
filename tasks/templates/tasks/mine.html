@@ -1,37 +1,36 @@
 {% extends 'base.html' %}
 
 {% block title %}
-My Tasks
+    My Tasks
 {% endblock title %}
-
 {% block content %}
-<main>
-    <div>
-        <h1 class="task_color">My Tasks</h1>
-        {% if my_tasks %}
-        <table>
-            <thead>
-                <tr class="task_color">
-                    <th>Name</th>
-                    <th>Start Date</th>
-                    <th>Due date</th>
-                    <th>Is completed</th>
-                </tr>
-            </thead>
-            <tbody>
-                {% for task in my_tasks %}
-                <tr>
-                    <td class="name_color">{{task.name}}</td>
-                    <td>{{task.start_date}}</td>
-                    <td class="due_date_color"> {{task.due_date}}</td>
-                    <td>{{task.is_completed|yesno}}</td>
-                </tr>
-                {% endfor %}
-            </tbody>
-            {% else %}
-            <p>You have no tasks</p>
-            {% endif %}
-        </table>
-    </div>
-</main>
+    <main>
+        <div>
+            <h1 class="task_color">My Tasks</h1>
+            {% if my_tasks %}
+                <table>
+                    <thead>
+                        <tr class="task_color">
+                            <th>Name</th>
+                            <th>Start Date</th>
+                            <th>Due date</th>
+                            <th>Is completed</th>
+                        </tr>
+                    </thead>
+                    <tbody>
+                        {% for task in my_tasks %}
+                            <tr>
+                                <td class="name_color">{{ task.name }}</td>
+                                <td>{{ task.start_date }}</td>
+                                <td class="due_date_color">{{ task.due_date }}</td>
+                                <td>{{ task.is_completed|yesno }}</td>
+                            </tr>
+                        {% endfor %}
+                    </tbody>
+                {% else %}
+                    <p>You have no tasks</p>
+                {% endif %}
+            </table>
+        </div>
+    </main>
 {% endblock content %}

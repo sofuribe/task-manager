@@ -1,42 +1,45 @@
 {% extends 'base.html' %}
 
 {% block title %}
-My Project
+    My Project
 {% endblock title %}
-
 {% block content %}
-<main>
-    <div>
-        <h1>{{ details.name }}</h1>
-        <p class="description"><b>Description: </b> {{ details.description }}</p>
-        <h2>Tasks</h2>
-        <p class="create"><a href="{% url 'create_task' %}">Create a new task</a></p>
-        {% if details.tasks.all %}
-        <table>
-            <thead>
-                <tr>
-                    <th>Name</th>
-                    <th>Assignee</th>
-                    <th>Start date</th>
-                    <th>Due date</th>
-                    <th>Is completed</th>
-                </tr>
-            </thead>
-            <tbody>
-                {% for detail in details.tasks.all %}
-                <tr>
-                    <td>{{ detail.name }}</td>
-                    <td>{{ detail.assignee }}</td>
-                    <td>{{ detail.start_date }}</td>
-                    <td>{{ detail.due_date }}</td>
-                    <td>{{ detail.is_completed|yesno }}</td>
-                </tr>
-                {% endfor %}
-            </tbody>
-        </table>
-        {% else %}
-        <p>This project has no tasks</p>
-        {% endif %}
-    </div>
-</main>
+    <main>
+        <div>
+            <h1>{{ details.name }}</h1>
+            <p class="description">
+                <b>Description: </b> {{ details.description }}
+            </p>
+            <h2>Tasks</h2>
+            <p class="create">
+                <a href="{% url 'create_task' %}">Create a new task</a>
+            </p>
+            {% if details.tasks.all %}
+                <table>
+                    <thead>
+                        <tr>
+                            <th>Name</th>
+                            <th>Assignee</th>
+                            <th>Start date</th>
+                            <th>Due date</th>
+                            <th>Is completed</th>
+                        </tr>
+                    </thead>
+                    <tbody>
+                        {% for detail in details.tasks.all %}
+                            <tr>
+                                <td>{{ detail.name }}</td>
+                                <td>{{ detail.assignee }}</td>
+                                <td>{{ detail.start_date }}</td>
+                                <td>{{ detail.due_date }}</td>
+                                <td>{{ detail.is_completed|yesno }}</td>
+                            </tr>
+                        {% endfor %}
+                    </tbody>
+                </table>
+            {% else %}
+                <p>This project has no tasks</p>
+            {% endif %}
+        </div>
+    </main>
 {% endblock content %}
